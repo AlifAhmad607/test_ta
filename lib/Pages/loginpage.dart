@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:test_ta/Controllers/logincontroller.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends GetView<LoginController> {
   const LoginPage({super.key});
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  bool isHidden = true;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +16,6 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               const SizedBox(height: 40),
 
-              // Logo
               CircleAvatar(
                 radius: 35,
                 backgroundColor: Colors.brown.shade100,
@@ -32,13 +26,8 @@ class _LoginPageState extends State<LoginPage> {
 
               const Text(
                 "Coffee Street",
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-
-              const SizedBox(height: 4),
 
               const Text(
                 "Manajemen Operasional UMKM",
@@ -51,17 +40,14 @@ class _LoginPageState extends State<LoginPage> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "Masuk ke Akun",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
 
               const SizedBox(height: 16),
 
-              // Username
               TextField(
+                controller: controller.usernameController,
                 decoration: InputDecoration(
                   hintText: "Masukkan nama pengguna",
                   prefixIcon: const Icon(Icons.person_outline),
@@ -76,49 +62,41 @@ class _LoginPageState extends State<LoginPage> {
 
               const SizedBox(height: 16),
 
-              // Password
-              TextField(
-                obscureText: isHidden,
-                decoration: InputDecoration(
-                  hintText: "Kata sandi",
-                  prefixIcon: const Icon(Icons.lock_outline),
-                  suffixIcon: IconButton(
-                    icon: Icon(
-                      isHidden ? Icons.visibility_off : Icons.visibility,
+              Obx(() => TextField(
+                    controller: controller.passwordController,
+                    obscureText: controller.isHidden.value,
+                    decoration: InputDecoration(
+                      hintText: "Kata sandi",
+                      prefixIcon: const Icon(Icons.lock_outline),
+                      suffixIcon: IconButton(
+                        icon: Icon(controller.isHidden.value
+                            ? Icons.visibility_off
+                            : Icons.visibility),
+                        onPressed: controller.togglePassword,
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey.shade200,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        isHidden = !isHidden;
-                      });
-                    },
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey.shade200,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
+                  )),
 
               const SizedBox(height: 24),
 
-              // Button
               SizedBox(
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: controller.login,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFD97706),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  child: const Text(
-                    "Masuk",
-                    style: TextStyle(fontSize: 16),
-                  ),
+                  child: const Text("Masuk"),
                 ),
               ),
 
