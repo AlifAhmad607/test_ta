@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_ta/Controllers/dashboardcontroller.dart';
+import 'package:test_ta/Routes/routes.dart';
 import 'package:test_ta/reusablecomponent/infocard.dart';
 import 'package:test_ta/reusablecomponent/menuitem.dart';
 
@@ -16,15 +17,25 @@ class Dashboardpage extends GetView<DashboardController> {
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
+        onTap: (index) {
+          if (index == 1) {
+            Get.offNamed(AppRoutes.Analisis);
+          }
+        },
         items: const [
           BottomNavigationBarItem(
-              icon: Icon(Icons.dashboard), label: "Dashboard"),
+            icon: Icon(Icons.dashboard),
+            label: "Dashboard",
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart), label: "Analisis"),
+            icon: Icon(Icons.bar_chart),
+            label: "Analisis",
+          ),
           BottomNavigationBarItem(
-              icon: Icon(Icons.attach_money), label: "HPP & Margin"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: "Setelan"),
+            icon: Icon(Icons.attach_money),
+            label: "HPP & Margin",
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setelan"),
         ],
       ),
 
@@ -34,7 +45,6 @@ class Dashboardpage extends GetView<DashboardController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               // 🔻 HEADER (TANPA OBX ❗)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +55,9 @@ class Dashboardpage extends GetView<DashboardController> {
                       Text(
                         controller.greeting,
                         style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       Text(
                         controller.todayDate,
@@ -60,9 +72,9 @@ class Dashboardpage extends GetView<DashboardController> {
                       CircleAvatar(
                         backgroundColor: Colors.orange.shade200,
                         child: const Icon(Icons.person),
-                      )
+                      ),
                     ],
-                  )
+                  ),
                 ],
               ),
 
@@ -76,28 +88,36 @@ class Dashboardpage extends GetView<DashboardController> {
                   color: const Color(0xFFD97706),
                   borderRadius: BorderRadius.circular(16),
                 ),
-                child: Obx(() => Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("PENDAPATAN",
-                            style: TextStyle(color: Colors.white70)),
-                        const SizedBox(height: 8),
-                        const Text("Total Omzet Hari Ini",
-                            style: TextStyle(color: Colors.white)),
-                        const SizedBox(height: 8),
-                        Text(
-                          controller.formattedOmzet,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                          ),
+                child: Obx(
+                  () => Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "PENDAPATAN",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text(
+                        "Total Omzet Hari Ini",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        controller.formattedOmzet,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
                         ),
-                        const SizedBox(height: 8),
-                        const Text("↑ 12% meningkat dari kemarin",
-                            style: TextStyle(color: Colors.white70)),
-                      ],
-                    )),
+                      ),
+                      const SizedBox(height: 8),
+                      const Text(
+                        "↑ 12% meningkat dari kemarin",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+                    ],
+                  ),
+                ),
               ),
 
               const SizedBox(height: 20),
@@ -106,22 +126,26 @@ class Dashboardpage extends GetView<DashboardController> {
               Row(
                 children: [
                   Expanded(
-                    child: Obx(() => InfoCard(
-                          icon: Icons.receipt,
-                          title: "Jumlah Transaksi",
-                          value: controller.transaksi.value.toString(),
-                          subtitle: "order",
-                        )),
+                    child: Obx(
+                      () => InfoCard(
+                        icon: Icons.receipt,
+                        title: "Jumlah Transaksi",
+                        value: controller.transaksi.value.toString(),
+                        subtitle: "order",
+                      ),
+                    ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
-                    child: Obx(() => InfoCard(
-                          icon: Icons.inventory,
-                          title: "Status Stok",
-                          value: controller.stokMenipis.value.toString(),
-                          subtitle: "Menipis",
-                          isWarning: true,
-                        )),
+                    child: Obx(
+                      () => InfoCard(
+                        icon: Icons.inventory,
+                        title: "Status Stok",
+                        value: controller.stokMenipis.value.toString(),
+                        subtitle: "Menipis",
+                        isWarning: true,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -134,13 +158,9 @@ class Dashboardpage extends GetView<DashboardController> {
                 children: const [
                   Text(
                     "Menu Manajemen",
-                    style:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    "Lihat Semua",
-                    style: TextStyle(color: Colors.orange),
-                  ),
+                  Text("Lihat Semua", style: TextStyle(color: Colors.orange)),
                 ],
               ),
 
@@ -155,21 +175,25 @@ class Dashboardpage extends GetView<DashboardController> {
                 mainAxisSpacing: 12,
                 children: const [
                   MenuItem(
-                      icon: Icons.bar_chart,
-                      title: "Laporan",
-                      subtitle: "Penjualan & Laba"),
+                    icon: Icons.bar_chart,
+                    title: "Laporan",
+                    subtitle: "Penjualan & Laba",
+                  ),
                   MenuItem(
-                      icon: Icons.badge,
-                      title: "Absensi Pegawai",
-                      subtitle: "8 Staf Hadir"),
+                    icon: Icons.badge,
+                    title: "Absensi Pegawai",
+                    subtitle: "8 Staf Hadir",
+                  ),
                   MenuItem(
-                      icon: Icons.coffee,
-                      title: "Stok Harian",
-                      subtitle: "Kelola Menu"),
+                    icon: Icons.coffee,
+                    title: "Stok Harian",
+                    subtitle: "Kelola Menu",
+                  ),
                   MenuItem(
-                      icon: Icons.shopping_cart,
-                      title: "Pesanan",
-                      subtitle: "Order Masuk"),
+                    icon: Icons.shopping_cart,
+                    title: "Pesanan",
+                    subtitle: "Order Masuk",
+                  ),
                 ],
               ),
             ],
