@@ -4,6 +4,7 @@ import 'package:test_ta/Controllers/main_controller.dart';
 import 'package:test_ta/Pages/dashboardpage.dart';
 import 'package:test_ta/Pages/analisisPage.dart';
 import 'package:test_ta/Pages/manajemenHPP.dart';
+import 'package:test_ta/Pages/settingpage.dart';
 
 class MainPage extends GetView<MainController> {
   const MainPage({super.key});
@@ -14,11 +15,11 @@ class MainPage extends GetView<MainController> {
       body: Obx(
         () => IndexedStack(
           index: controller.currentIndex.value,
-          children: const [
+          children:       [
             Dashboardpage(),
             AnalisisPage(),
             ManajemenPage(),
-            Center(child: Text("Halaman Setelan (Belum dibuat)")),
+            SettingsPage(),
           ],
         ),
       ),
