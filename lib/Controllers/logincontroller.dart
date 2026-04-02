@@ -18,8 +18,8 @@ class LoginController extends GetxController {
 
   // 🔑 LOGIN FUNCTION (dummy)
   void login() {
-  Get.offAllNamed(AppRoutes.Analisis);
-}
+    Get.offAllNamed(AppRoutes.MAIN);
+  }
 
   // 🧹 bersihin controller
   @override
