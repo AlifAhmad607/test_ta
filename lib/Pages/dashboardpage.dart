@@ -14,31 +14,6 @@ class Dashboardpage extends GetView<DashboardController> {
       backgroundColor: const Color(0xFFF5F5F5),
 
       // 🔻 BOTTOM NAV
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        onTap: (index) {
-          if (index == 1) {
-            Get.offNamed(AppRoutes.Analisis);
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: "Dashboard",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: "Analisis",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money),
-            label: "HPP & Margin",
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setelan"),
-        ],
-      ),
-
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(20),

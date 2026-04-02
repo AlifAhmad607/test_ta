@@ -35,33 +35,6 @@ class AnalisisPage extends GetView<AnalisisController> {
         ],
       ),
 
-      // 🔻 BOTTOM NAV
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        currentIndex: 1, // Agar tab "Analisis" yang aktif
-        onTap: (index) {
-          if (index == 0) {
-            Get.offNamed(AppRoutes.DASHBOARD);
-          }
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: "Dashboard",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bar_chart),
-            label: "Analisis",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money),
-            label: "HPP & Margin",
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Setelan"),
-        ],
-      ),
-
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
