@@ -4,11 +4,13 @@ import 'package:test_ta/Bindings/dashboardbinding.dart';
 import 'package:test_ta/Bindings/loginbinding.dart';
 import 'package:test_ta/Bindings/manajemenBinding.dart';
 import 'package:test_ta/Bindings/main_binding.dart';
+import 'package:test_ta/Bindings/settingsbinding.dart';
 import 'package:test_ta/Pages/analisisPage.dart';
 import 'package:test_ta/Pages/dashboardpage.dart';
 import 'package:test_ta/Pages/loginpage.dart';
 import 'package:test_ta/Pages/main_page.dart';
 import 'package:test_ta/Pages/manajemenHPP.dart';
+import 'package:test_ta/Pages/settingpage.dart';
 import 'package:test_ta/Routes/routes.dart';
 
 class AppPage {
@@ -38,5 +40,10 @@ class AppPage {
       page: () => const MainPage(),
       binding: MainBinding(),
     ),
+      GetPage(
+        name: AppRoutes.SETTINGS,
+        page: () => const SettingsPage(),
+        binding: SettingsBinding(),
+      ),
   ];
 }
