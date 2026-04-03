@@ -4,6 +4,7 @@ import 'package:test_ta/Controllers/analisisController.dart';
 import 'package:test_ta/reusablecomponent/app_colors.dart';
 import 'package:test_ta/reusablecomponent/infocard.dart';
 import 'package:test_ta/Routes/routes.dart';
+import 'package:test_ta/Controllers/main_controller.dart';
 
 class AnalisisPage extends GetView<AnalisisController> {
   const AnalisisPage({super.key});
@@ -23,7 +24,9 @@ class AnalisisPage extends GetView<AnalisisController> {
             padding: const EdgeInsets.only(right: 16),
             child: GestureDetector(
               onTap: () {
-                // aksi ketika diklik (misal ke profile page)
+                Get.find<MainController>().changePage(
+                  3,
+                ); // 🔥 Pindah ke Tab Setelan
               },
               child: CircleAvatar(
                 radius: 18,

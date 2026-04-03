@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_ta/Controllers/ManajemenController.dart';
+import 'package:test_ta/Controllers/main_controller.dart';
 
- 
 class ManajemenPage extends GetView<Manajemencontroller> {
   const ManajemenPage({super.key});
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +38,7 @@ class ManajemenPage extends GetView<Manajemencontroller> {
       ),
     );
   }
- 
+
   // ─── AppBar ───────────────────────────────────────────────────────────────
   Widget _buildAppBar() {
     return Padding(
@@ -79,7 +79,11 @@ class ManajemenPage extends GetView<Manajemencontroller> {
           ),
           const SizedBox(width: 10),
           GestureDetector(
-            onTap: controller.onProfileTap,
+            onTap: () {
+              Get.find<MainController>().changePage(
+                3,
+              ); // 🔥 Pindah ke Tab Setelan
+            },
             child: Container(
               width: 40,
               height: 40,
@@ -94,7 +98,7 @@ class ManajemenPage extends GetView<Manajemencontroller> {
       ),
     );
   }
- 
+
   // ─── Estimasi Row ─────────────────────────────────────────────────────────
   Widget _buildEstimasiRow() {
     return Row(
@@ -105,125 +109,129 @@ class ManajemenPage extends GetView<Manajemencontroller> {
       ],
     );
   }
- 
+
   Widget _buildLabaHarianCard() {
-    return Obx(() => Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 2),
-              ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  const Text(
-                    'EST. LABA HARIAN',
-                    style: TextStyle(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF9E9E9E),
-                      letterSpacing: 0.5,
-                    ),
+    return Obx(
+      () => Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                const Text(
+                  'EST. LABA HARIAN',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF9E9E9E),
+                    letterSpacing: 0.5,
                   ),
-                  const Spacer(),
-                  Icon(
-                    controller.trendIconData,
-                    color: controller.trendColor,
-                    size: 16,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8),
-              Text(
-                controller.labaHarianFormatted,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF1A1A2E),
                 ),
+                const Spacer(),
+                Icon(
+                  controller.trendIconData,
+                  color: controller.trendColor,
+                  size: 16,
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text(
+              controller.labaHarianFormatted,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: Color(0xFF1A1A2E),
               ),
-              const SizedBox(height: 4),
-              Row(
-                children: [
-                  Icon(
-                    controller.arrowIconData,
+            ),
+            const SizedBox(height: 4),
+            Row(
+              children: [
+                Icon(
+                  controller.arrowIconData,
+                  color: controller.trendColor,
+                  size: 12,
+                ),
+                const SizedBox(width: 2),
+                Text(
+                  controller.persenKemarinFormatted,
+                  style: TextStyle(
+                    fontSize: 11,
                     color: controller.trendColor,
-                    size: 12,
+                    fontWeight: FontWeight.w500,
                   ),
-                  const SizedBox(width: 2),
-                  Text(
-                    controller.persenKemarinFormatted,
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: controller.trendColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ));
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
- 
+
   Widget _buildLabaBulananCard() {
-    return Obx(() => Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 2),
+    return Obx(
+      () => Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'EST. LABA BULANAN',
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF9E9E9E),
+                letterSpacing: 0.5,
               ),
-            ],
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'EST. LABA BULANAN',
-                style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xFF9E9E9E),
-                  letterSpacing: 0.5,
-                ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              controller.labaBulananFormatted,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: Color(0xFF1A1A2E),
               ),
-              const SizedBox(height: 8),
-              Text(
-                controller.labaBulananFormatted,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF1A1A2E),
-                ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              controller.targetLabaFormatted,
+              style: const TextStyle(
+                fontSize: 11,
+                color: Color(0xFF9E9E9E),
+                fontWeight: FontWeight.w400,
               ),
-              const SizedBox(height: 4),
-              Text(
-                controller.targetLabaFormatted,
-                style: const TextStyle(
-                  fontSize: 11,
-                  color: Color(0xFF9E9E9E),
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ],
-          ),
-        ));
+            ),
+          ],
+        ),
+      ),
+    );
   }
- 
+
   // ─── Daftar Margin Header ─────────────────────────────────────────────────
   Widget _buildDaftarMarginHeader() {
     return Row(
@@ -264,7 +272,7 @@ class ManajemenPage extends GetView<Manajemencontroller> {
       ],
     );
   }
- 
+
   // ─── Table Header ─────────────────────────────────────────────────────────
   Widget _buildTableHeader() {
     return const Padding(
@@ -313,16 +321,18 @@ class ManajemenPage extends GetView<Manajemencontroller> {
       ),
     );
   }
- 
+
   // ─── Product List ─────────────────────────────────────────────────────────
   Widget _buildProductList() {
-    return Obx(() => Column(
-          children: controller.products
-              .map((product) => _buildProductItem(product))
-              .toList(),
-        ));
+    return Obx(
+      () => Column(
+        children: controller.products
+            .map((product) => _buildProductItem(product))
+            .toList(),
+      ),
+    );
   }
- 
+
   Widget _buildProductItem(ProductMargin product) {
     return GestureDetector(
       onTap: () => controller.onProductTap(product),
@@ -377,7 +387,7 @@ class ManajemenPage extends GetView<Manajemencontroller> {
                   ],
                 ),
               ),
- 
+
               // HPP
               Expanded(
                 flex: 3,
@@ -391,7 +401,7 @@ class ManajemenPage extends GetView<Manajemencontroller> {
                   ),
                 ),
               ),
- 
+
               // Margin
               Expanded(
                 flex: 3,

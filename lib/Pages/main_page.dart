@@ -15,7 +15,7 @@ class MainPage extends GetView<MainController> {
       body: Obx(
         () => IndexedStack(
           index: controller.currentIndex.value,
-          children:       [
+          children: const [
             Dashboardpage(),
             AnalisisPage(),
             ManajemenPage(),
