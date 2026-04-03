@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_ta/Controllers/dashboardcontroller.dart';
 import 'package:test_ta/Routes/routes.dart';
+import 'package:test_ta/Controllers/main_controller.dart';
 import 'package:test_ta/reusablecomponent/infocard.dart';
 import 'package:test_ta/reusablecomponent/menuitem.dart';
 
@@ -44,9 +45,16 @@ class Dashboardpage extends GetView<DashboardController> {
                     children: [
                       const Icon(Icons.notifications_none),
                       const SizedBox(width: 12),
-                      CircleAvatar(
-                        backgroundColor: Colors.orange.shade200,
-                        child: const Icon(Icons.person),
+                      GestureDetector(
+                        onTap: () {
+                          Get.find<MainController>().changePage(
+                            3,
+                          ); // 🔥 Pindah ke Tab Setelan
+                        },
+                        child: CircleAvatar(
+                          backgroundColor: Colors.orange.shade200,
+                          child: const Icon(Icons.person),
+                        ),
                       ),
                     ],
                   ),

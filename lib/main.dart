@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:test_ta/Bindings/loginbinding.dart';
+import 'package:test_ta/Bindings/main_binding.dart';
 import 'package:test_ta/Bindings/settingsbinding.dart';
 import 'package:test_ta/Routes/page.dart';
 import 'package:test_ta/Routes/routes.dart';
@@ -17,9 +18,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Coffee Street',
-      initialRoute: AppRoutes.SETTINGS,
+      initialRoute: AppRoutes.MAIN,
       getPages: AppPage.pages,
-      initialBinding: SettingsBinding (),
+      initialBinding: MainBinding(),
     );
   }
 }
