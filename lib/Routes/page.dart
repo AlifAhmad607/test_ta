@@ -1,12 +1,10 @@
 import 'package:get/get.dart';
-import 'package:test_ta/Bindings/analisisBinding.dart';
-import 'package:test_ta/Bindings/dashboardbinding.dart';
 import 'package:test_ta/Bindings/loginbinding.dart';
-import 'package:test_ta/Bindings/manajemenBinding.dart';
 import 'package:test_ta/Bindings/main_binding.dart';
-import 'package:test_ta/Bindings/settingsbinding.dart';
+import 'package:test_ta/Bindings/main_kasir_binding.dart';
 import 'package:test_ta/Pages/analisisPage.dart';
 import 'package:test_ta/Pages/dashboardpage.dart';
+import 'package:test_ta/Pages/kasir/main_kasir_page.dart';
 import 'package:test_ta/Pages/loginpage.dart';
 import 'package:test_ta/Pages/main_page.dart';
 import 'package:test_ta/Pages/manajemenHPP.dart';
@@ -23,27 +21,32 @@ class AppPage {
     GetPage(
       name: AppRoutes.DASHBOARD,
       page: () => const Dashboardpage(),
-      binding: Dashboardbinding(),
+      binding: MainBinding(),
     ),
     GetPage(
-      name: '/analisis',
+      name: AppRoutes.Analisis,
       page: () => const AnalisisPage(),
-      binding: AnalisisBinding(),
+      binding: MainBinding(),
     ),
-     GetPage(
-      name: '/manajemen',
+    GetPage(
+      name: AppRoutes.Manajemen,
       page: () => const ManajemenPage(),
-      binding: Manajemenbinding(),
+      binding: MainBinding(),
     ),
     GetPage(
       name: AppRoutes.MAIN,
       page: () => const MainPage(),
       binding: MainBinding(),
     ),
-      GetPage(
-        name: AppRoutes.SETTINGS,
-        page: () => const SettingsPage(),
-        binding: SettingsBinding(),
-      ),
+    GetPage(
+      name: AppRoutes.SETTINGS,
+      page: () => const SettingsPage(),
+      binding: MainBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.DASHBOARDKASIR,
+      page: () => const MainKasirPage(),
+      binding: MainKasirBinding(),
+    ),
   ];
 }

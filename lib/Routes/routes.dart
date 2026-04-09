@@ -5,4 +5,5 @@ class AppRoutes {
   static const String Manajemen = '/manajemen';
   static const String MAIN = '/main';
   static const String SETTINGS = '/settings';
+  static const String DASHBOARDKASIR = '/dashboardKasir';
 }
