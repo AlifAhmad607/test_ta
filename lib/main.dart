@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Coffee Street',
-      initialRoute: AppRoutes.DASHBOARDKASIR,
+      initialRoute: AppRoutes.MAIN,
       getPages: AppPage.pages,
-      initialBinding: MainKasirBinding(),
+      initialBinding: MainBinding(),
     );
   }
 }
