@@ -40,6 +40,7 @@ class ManajemenPage extends GetView<Manajemencontroller> {
     );
   }
 
+
   // ─── AppBar ───────────────────────────────────────────────────────────────
   Widget _buildAppBar() {
     return Padding(

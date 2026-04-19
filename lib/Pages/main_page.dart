@@ -7,24 +7,23 @@ import 'package:test_ta/Pages/manajemenHPP.dart';
 import 'package:test_ta/Pages/settingpage.dart';
 
 class MainPage extends GetView<MainController> {
-  const MainPage({super.key});
+   MainPage({super.key});
 
+  final List<Widget> _pages = [
+    const Dashboardpage(),
+    const AnalisisPage(),
+    const ManajemenPage(),
+    const SettingsPage(),
+  ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Obx(
-        () => IndexedStack(
+    return Obx(
+  () => Scaffold(
+    body: IndexedStack(
           index: controller.currentIndex.value,
-          children: const [
-            Dashboardpage(),
-            AnalisisPage(),
-            ManajemenPage(),
-            SettingsPage(),
-          ],
+          children: _pages,
         ),
-      ),
-      bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
+          bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.orange,
           unselectedItemColor: Colors.grey,
           currentIndex: controller.currentIndex.value,
@@ -50,7 +49,7 @@ class MainPage extends GetView<MainController> {
             ),
           ],
         ),
-      ),
+        ),
     );
   }
 }

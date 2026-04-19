@@ -2,8 +2,10 @@ import 'package:get/get.dart';
 import 'package:test_ta/Bindings/loginbinding.dart';
 import 'package:test_ta/Bindings/main_binding.dart';
 import 'package:test_ta/Bindings/main_kasir_binding.dart';
+import 'package:test_ta/Bindings/posbinding.dart';
 import 'package:test_ta/Pages/analisisPage.dart';
 import 'package:test_ta/Pages/dashboardpage.dart';
+import 'package:test_ta/Pages/kasir/POS.dart';
 import 'package:test_ta/Pages/kasir/main_kasir_page.dart';
 import 'package:test_ta/Pages/loginpage.dart';
 import 'package:test_ta/Pages/main_page.dart';
@@ -35,7 +37,7 @@ class AppPage {
     ),
     GetPage(
       name: AppRoutes.MAIN,
-      page: () => const MainPage(),
+      page: () =>  MainPage(),
       binding: MainBinding(),
     ),
     GetPage(
@@ -45,8 +47,13 @@ class AppPage {
     ),
     GetPage(
       name: AppRoutes.DASHBOARDKASIR,
-      page: () => const MainKasirPage(),
+      page: () =>  MainKasirPage(),
       binding: MainKasirBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.POS,
+      page: () =>  PosPage(),
+      binding: Posbinding(),
     ),
   ];
 }
